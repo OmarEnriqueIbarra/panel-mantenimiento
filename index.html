@@ -51,6 +51,17 @@ body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-hei
 .ic-fallaB{background:#f3e8fd;color:#7d3fa8;}
 
 .pie{text-align:center;margin-top:28px;font-size:11px;color:var(--mu);font-family:'Space Mono',monospace;}
+
+.badge-aviso{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#fff3cd;color:#8a6100;border:1px solid #f0c14b;
+  border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;
+  animation:parpadeo 2s ease-in-out infinite;
+}
+@keyframes parpadeo{
+  0%,100%{opacity:1;}
+  50%{opacity:.55;}
+}
 </style>
 </head>
 <body>
@@ -107,6 +118,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-hei
         <div class="ic ic-trab">🔧</div>
         <div class="tit">Registro de Trabajos</div>
         <div class="sub">Ver tus trabajos asignados y completarlos</div>
+        <div class="badge-aviso" id="avisoTrabajos" style="display:none">⚠️ Hay trabajos pendientes</div>
         <div class="arrow">Abrir →</div>
       </a>
     </div>
@@ -114,6 +126,25 @@ body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-hei
   </div>
   <div class="pie">akapol · panel de mantenimiento</div>
 </div>
+
+<script>
+var APPS_SCRIPT_TRABAJOS = 'https://script.google.com/macros/s/AKfycbz3kvxit-_S5BzQvwTO_y6ggB3Fsvs2A_P-SOzlZOLt2GzXKbs7O8eVopLwP5vSpCU/exec';
+
+function chequearTrabajosPendientes(){
+  fetch(APPS_SCRIPT_TRABAJOS)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var todos = data.trabajos || [];
+      var nuevos = todos.filter(function(t){ return !t.archivado && !t.vistoPorTecnico; });
+      if(nuevos.length > 0){
+        document.getElementById('avisoTrabajos').style.display = 'inline-flex';
+      }
+    })
+    .catch(function(){ /* si falla la consulta, simplemente no se muestra el aviso */ });
+}
+
+chequearTrabajosPendientes();
+</script>
 
 </body>
 </html>
