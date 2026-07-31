@@ -13,39 +13,42 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-height:100vh;}
 
-.hdr{background:var(--head);color:#fff;padding:28px 20px 32px;text-align:center;}
+.hdr{background:var(--head);color:#fff;padding:32px 20px 40px;text-align:center;}
 .hdr .ey{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--ac2);font-family:'Space Mono',monospace;margin-bottom:8px;}
 .hdr h1{font-size:26px;font-weight:800;}
 
-.wrap{max-width:640px;margin:0 auto;padding:24px 18px 40px;}
+.wrap{max-width:900px;margin:-24px auto 0;padding:0 18px 40px;}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:460px){.grid{grid-template-columns:1fr;}}
 
 .card{
-  display:flex;align-items:center;gap:16px;
-  background:var(--card);border:1.5px solid var(--br);border-radius:16px;
-  padding:20px 18px;margin-bottom:14px;text-decoration:none;color:var(--tx);
-  transition:border-color .15s, transform .1s;
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  background:var(--card);border:1.5px solid var(--br);border-radius:18px;
+  padding:22px 18px;text-decoration:none;color:var(--tx);
+  transition:border-color .15s, transform .1s, box-shadow .15s;
+  box-shadow:0 1px 2px rgba(0,0,0,.03);
 }
-.card:active{transform:scale(.98);}
-.card:hover{border-color:var(--ac);}
+.card:active{transform:scale(.97);}
+.card:hover{border-color:var(--ac);box-shadow:0 6px 16px rgba(0,0,0,.06);}
 .card .ic{
-  width:52px;height:52px;border-radius:12px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:26px;
+  width:48px;height:48px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;font-size:24px;
 }
-.card .tx{flex:1;}
-.card .tit{font-size:16px;font-weight:800;margin-bottom:3px;}
-.card .sub{font-size:12.5px;color:var(--mu);}
-.card .arrow{font-size:20px;color:var(--br);flex-shrink:0;}
-.card:hover .arrow{color:var(--ac);}
+.card .tit{font-size:15px;font-weight:800;margin-top:2px;}
+.card .sub{font-size:12px;color:var(--mu);line-height:1.4;}
+.card .arrow{margin-top:auto;padding-top:8px;font-size:13px;font-weight:700;color:var(--ac);display:flex;align-items:center;gap:4px;}
 
 .ic-elev{background:#fdecea;color:#c0392b;}
 .ic-ped{background:#fff3cd;color:#8a6100;}
 .ic-sab{background:#e8f0fe;color:#2a5db0;}
 .ic-trab{background:#e8f5e9;color:#2e7d32;}
-.ic-eq{background:#e8f0fe;color:#2a5db0;}
+.ic-eq{background:#e3f2fd;color:#1565c0;}
 .ic-fallaA{background:#fdecea;color:#a83232;}
 .ic-fallaB{background:#f3e8fd;color:#7d3fa8;}
 
-.pie{text-align:center;margin-top:24px;font-size:11px;color:var(--mu);font-family:'Space Mono',monospace;}
+.pie{text-align:center;margin-top:28px;font-size:11px;color:var(--mu);font-family:'Space Mono',monospace;}
 </style>
 </head>
 <body>
@@ -56,52 +59,51 @@ body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-hei
 </div>
 
 <div class="wrap">
+  <div class="grid">
 
-  <a class="card" href="https://omarenriqueibarra.github.io/equipo_elevacion/">
-    <div class="ic ic-elev">🏗️</div>
-    <div class="tx">
+    <a class="card" href="https://omarenriqueibarra.github.io/equipo_elevacion/">
+      <div class="ic ic-elev">🏗️</div>
       <div class="tit">Equipo de Elevación</div>
       <div class="sub">Reservar turno o cerrar el uso del equipo</div>
-    </div>
-    <div class="arrow">→</div>
-  </a>
+      <div class="arrow">Abrir →</div>
+    </a>
 
-  <a class="card" href="https://omarenriqueibarra.github.io/sabados-turnos/">
-    <div class="ic ic-sab">📅</div>
-    <div class="tx">
+    <a class="card" href="https://omarenriqueibarra.github.io/sabados-turnos/">
+      <div class="ic ic-sab">📅</div>
       <div class="tit">Turnos Sábado</div>
       <div class="sub">Confirmar asistencia, avisar que no podés venir</div>
-    </div>
-    <div class="arrow">→</div>
-  </a>
+      <div class="arrow">Abrir →</div>
+    </a>
 
-  <a class="card" href="https://omarenriqueibarra.github.io/2_TRABAJOS_index_v1.html/">
-    <div class="ic ic-trab">🔧</div>
-    <div class="tx">
+    <a class="card" href="https://omarenriqueibarra.github.io/2_TRABAJOS_index_v1.html/">
+      <div class="ic ic-trab">🔧</div>
       <div class="tit">Registro de Trabajos</div>
       <div class="sub">Ver tus trabajos asignados y completarlos</div>
-    </div>
-    <div class="arrow">→</div>
-  </a>
+      <div class="arrow">Abrir →</div>
+    </a>
 
-  <a class="card" href="https://omarenriqueibarra.github.io/reporte-falla/">
-    <div class="ic ic-fallaA">📞</div>
-    <div class="tx">
+    <a class="card" href="https://omarenriqueibarra.github.io/Control_autoelevadores_zorras/">
+      <div class="ic ic-eq">🚜</div>
+      <div class="tit">Control de Equipos</div>
+      <div class="sub">Cronograma de mantenimiento de autoelevadores, zorras y traspaletas</div>
+      <div class="arrow">Abrir →</div>
+    </a>
+
+    <a class="card" href="https://omarenriqueibarra.github.io/reporte-falla/">
+      <div class="ic ic-fallaA">📞</div>
       <div class="tit">Reporte de Falla</div>
       <div class="sub">Cargar fallas, pendientes y repuestos</div>
-    </div>
-    <div class="arrow">→</div>
-  </a>
+      <div class="arrow">Abrir →</div>
+    </a>
 
-  <a class="card" href="https://omarenriqueibarra.github.io/reporte_falla_equipo/">
-    <div class="ic ic-fallaB">🔍</div>
-    <div class="tx">
+    <a class="card" href="https://omarenriqueibarra.github.io/reporte_falla_equipo/">
+      <div class="ic ic-fallaB">🔍</div>
       <div class="tit">Análisis de Causa Raíz</div>
       <div class="sub">Problema, 5 porqués y contramedidas</div>
-    </div>
-    <div class="arrow">→</div>
-  </a>
+      <div class="arrow">Abrir →</div>
+    </a>
 
+  </div>
   <div class="pie">akapol · panel de mantenimiento</div>
 </div>
 
