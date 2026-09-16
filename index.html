@@ -49,8 +49,19 @@ body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-hei
 .ic-fallaA{background:#fdecea;color:#a83232;}
 .ic-fallaB{background:#f3e8fd;color:#7d3fa8;}
 .ic-frio{background:#e0f7fa;color:#00838f;}
+.ic-dist{background:#fff4e0;color:#b36b00;}
 
 .pie{text-align:center;margin-top:28px;font-size:11px;color:var(--mu);font-family:'Space Mono',monospace;}
+
+.clock{
+  font-family:'Space Mono',monospace;
+  font-size:15px;
+  letter-spacing:.04em;
+  color:var(--ac2);
+  margin-top:10px;
+  text-transform:capitalize;
+}
+.clock .hora{font-size:22px;font-weight:700;color:#fff;margin-left:8px;}
 </style>
 </head>
 <body>
@@ -58,6 +69,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-hei
 <div class="hdr">
   <div class="ey">Akapol · Mantenimiento</div>
   <h1>¿Qué necesitás abrir?</h1>
+  <div class="clock" id="clock"><span class="fecha">—</span> <span class="hora">--:--:--</span></div>
 </div>
 
 <div class="wrap">
@@ -68,6 +80,14 @@ body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-hei
       <div class="ic ic-sab">📅</div>
       <div class="tit">Turnos Sábado</div>
       <div class="sub">Confirmar asistencia, avisar que no podés venir</div>
+      <div class="arrow">Abrir →</div>
+    </a>
+
+    <a class="card" href="https://omarenriqueibarra.github.io/distribucion-mantenimiento/">
+      <div class="cat">Personal</div>
+      <div class="ic ic-dist">🗂️</div>
+      <div class="tit">Distribución de Mantenimiento</div>
+      <div class="sub">Mecánicos y electricistas asignados por línea, turno mañana y tarde</div>
       <div class="arrow">Abrir →</div>
     </a>
 
@@ -123,5 +143,19 @@ body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-hei
   <div class="pie">akapol · panel de mantenimiento</div>
 </div>
 
+<script>
+(function(){
+  var fecha = document.querySelector("#clock .fecha");
+  var hora = document.querySelector("#clock .hora");
+  var dtf = new Intl.DateTimeFormat("es-AR", {weekday:"long", day:"numeric", month:"long"});
+  function tick(){
+    var now = new Date();
+    fecha.textContent = dtf.format(now) + " ·";
+    hora.textContent = now.toLocaleTimeString("es-AR", {hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:false});
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>
